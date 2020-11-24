@@ -6,4 +6,4 @@ app.get('/', async function (req, res) {
 });
 
 //add the router
-app.listen(process.env.port || 80);
+app.listen(process.env.port || 9000);
