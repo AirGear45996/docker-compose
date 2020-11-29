@@ -13,6 +13,8 @@ services:
       - ./logs:/var/log/nginx/                           # Монтируем папку с логами на хост машину для более удобного доступа
   app:
     build: ./app
+    environment:
+      BASE_URL: http://reverce-proxy
     ports:
       - 3000:3000
   api:
