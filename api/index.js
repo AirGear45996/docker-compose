@@ -12,15 +12,20 @@ app.use(cors());
 const HOST_SERVICE_TEST = process.env.HOST_SERVICE_TEST || 'http://localhost:5000/';
 
 app.get('/', async function (req, res) {
-    const data = (await axios.get(HOST_SERVICE_TEST)).data;
+    //const data = (await axios.get(HOST_SERVICE_TEST)).data;
     const result = {
         test: 'Hello world =) 12',
         env: process.env,
-        data,
+        //data,
     };
     res.json(result)
     //res.send('test');
 });
 
 //add the router
-app.listen(process.env.port || 8080);
+let port = process.env.port || 8080;
+app.listen(port, () => {
+
+    console.log('Server has been started, port' + port);
+
+});

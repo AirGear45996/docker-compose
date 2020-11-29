@@ -1,11 +1,11 @@
-version: "3.8"
+version: "3"
 services:
   service-test:
     build: ./service-test
     ports:
       - 5000:5000
   api:
-    build: ./api
+    build: backend
     ports:
       - 8080:8080
     environment:
@@ -13,6 +13,6 @@ services:
     links:
       - service-test
   frontend:
-    build: ./frontend
+    build: app
     ports:
       - 80:80
