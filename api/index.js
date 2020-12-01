@@ -2,7 +2,19 @@
 
 let express = require('express');
 let app = express();
+
+let mysql = require('mysql2');
 let axios = require('axios');
+
+//region db
+const pool = mysql.createPool({
+    connectionLimit: 5,
+    host: "db",
+    user: "user",
+    database: "mydb",
+    password: "password"
+});
+//endregion
 
 //region кросс доменные запросы
 const cors = require('cors');
@@ -13,13 +25,15 @@ const HOST_SERVICE_TEST = process.env.HOST_SERVICE_TEST || 'http://localhost:500
 
 app.get('/', async function (req, res) {
     //const data = (await axios.get(HOST_SERVICE_TEST)).data;
-    const result = {
-        test: 'Hello world =) 12',
-        env: process.env,
-        //data,
-    };
-    res.json(result)
-    //res.send('test');
+    pool.query("SELECT * FROM test", function(err, data) {
+        if(err) return console.log(err);
+        const result = {
+            test: 'Hello world =) 123',
+            env: process.env,
+            data,
+        };
+        res.json(result);
+    });
 });
 
 //add the router

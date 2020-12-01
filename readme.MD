@@ -55,3 +55,8 @@ docker-compose build && docker-compose up
 
 # Остановка и удаление всех контейнеров
 docker-compose stop && docker-compose rm
+
+----------------
+
+#Режим разработки
+docker-compose build && docker-compose up -d && cd app && npm run dev

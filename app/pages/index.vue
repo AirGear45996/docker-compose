@@ -1,6 +1,7 @@
 <template>
     <div class="container">
 
+            Hello world =)
 
             <b>test:</b>
             <pre>{{test}}</pre>
